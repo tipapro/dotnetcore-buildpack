@@ -60,7 +60,7 @@ dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/heroku_output --configuration
 
 if [ ! -f ${BUILD_DIR}/Procfile ]; then
 	cat << EOT >> ${BUILD_DIR}/Procfile
-worker: cd \$HOME/heroku_output && netcore "./${PROJECT_NAME}.dll"
+worker: cd \$HOME/heroku_output && dotnet "./${PROJECT_NAME}.dll"
 EOT
 else
 	topic "WARNING"
